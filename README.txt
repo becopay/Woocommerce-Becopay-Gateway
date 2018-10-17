@@ -90,6 +90,9 @@ __*You can select the radio button next to Becopay from the list of payment gate
 * __Becopay Api Key__  - enter your Becopay Api Key here. If you don't have Becopay merchat account register [here](https://becopay.com/en/merchant-register/).
 * Click on __Save Changes__ for the changes you made to be effected.
 
+= Note: =
+The format of your callback link is in this format
+`https://your-site/wc-api/BecopayGateway/?orderId=ORDER_ID`
 
 
 
