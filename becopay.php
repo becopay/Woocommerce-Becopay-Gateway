@@ -49,7 +49,7 @@ define('BECOPAY_PANEL_DESCRIPTION','Allow customers to pay cryptocurrency'); // 
 /**
  * Plugin update checking requirement configuration
  */
-define('BECOPAY_UPDATE_CHECK_LINK','https://github.com/mohsentm/Woocommerce-Becopay-Gateway');
+define('BECOPAY_UPDATE_CHECK_LINK','https://github.com/becopay/Woocommerce-Becopay-Gateway');
 define('BECOPAY_SLUG','Woocommerce-Becopay-Gateway');//Slug name
 
 /**
