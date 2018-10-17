@@ -19,6 +19,18 @@ msgid "Api key"
 msgstr "کلید سرویس"
 
 #: includes/classBecopayGateway.php
+msgid "Enter the phone number you registered in the Becopay here"
+msgstr "شماره تلفنی که با آن در بکوپی ثبت نامه کرده‌اید اینجا وارد کنید"
+
+#: includes/classBecopayGateway.php
+msgid "Enter Becopay api base url here"
+msgstr "آدرس سرویس بکوپي را اینجا وارد کنید"
+
+#: includes/classBecopayGateway.php
+msgid "Enter your Becopay Api Key here"
+msgstr "توکن سرویس بکوپی خود را اینجا وارد کنید"
+
+#: includes/classBecopayGateway.php
 msgid "Becopay payment invoice id is"
 msgstr "شناسه پرداخت سرویس بکوپی شما"
 

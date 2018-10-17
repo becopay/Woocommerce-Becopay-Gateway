@@ -105,7 +105,7 @@ class BecopayGateway extends WC_Payment_Gateway implements interfaceBecopayGatew
             'enabled' => array(
                 'title' => __('Enable/Disable', 'woocommerce'),
                 'type' => 'checkbox',
-                'label' => __('Enable Cheque Payment', 'woocommerce'),
+                'label' => __('Enable Becopay Payment', 'becopay'),
                 'default' => 'no'
             ),
             'title' => array(
@@ -125,17 +125,23 @@ class BecopayGateway extends WC_Payment_Gateway implements interfaceBecopayGatew
             'mobile' => array(
                 'title' => __('Mobile number', 'becopay'),
                 'type' => 'text',
-                'default' => ''
+                'default' => '',
+                'description' => __('Enter the phone number you registered in the Becopay here', 'becopay'),
+                'desc_tip' => true,
             ),
             'apiBaseUrl' => array(
                 'title' => __('Api base url', 'becopay'),
                 'type' => 'text',
-                'default' => ''
+                'default' => '',
+                'description' => __('Enter Becopay api base url here', 'becopay'),
+                'desc_tip' => true,
             ),
             'apiKey' => array(
                 'title' => __('Api key', 'becopay'),
                 'type' => 'text',
-                'default' => ''
+                'default' => '',
+                'description' => __('Enter your Becopay Api Key here', 'becopay'),
+                'desc_tip' => true,
             )
         );
     }

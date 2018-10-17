@@ -1,16 +1,13 @@
-# WooCommerce Becopay Gateway
+=== WooCommerce Becopay Gateway ===
+Tags: woocommerce, payment gateway, payment gateways, becopay
+Stable tag: 1.0.0
 
-
-
-**Tags:** woocommerce, payment gateway, payment gateways, becopay
-**Stable tag:** 1.0.0
-
-**License:** [Apache 2](https://github.com/becopay/Woocommerce-Becopay-Gateway/LICENSE.txt)
+License: Apache 2
 
 Becopay Woocommerce Payment Gateway allows you to pay with cryptocurrency.
 
 
-## Description
+== Description ==
 
 This is a Becopay payment gateway for WooCommerce.
 
@@ -27,14 +24,14 @@ With this Becopay Woocommerce Payment Gateway plugin, you will be able to accept
 
 
 
-### Plugin Features
+== Plugin Features ==
 
 *   __Accept payment__ via Bitcoin, Ethereum and etc.
 * 	__Seamless integration__ into the WooCommerce checkout page.
 
 
 
-### Suggestions / Feature Request
+== Suggestions / Feature Request ==
 
 If you have suggestions or a new feature request, feel free to get in touch with me via the contact form on my website [here](https://becopay.com/en/support/#contact-us)
 
@@ -42,15 +39,15 @@ You can also follow me on Twitter! **[@becopayment](http://twitter.com/becopayme
 
 
 
-### Contribute
+== Contribute ==
 To contribute to this plugin feel free to fork it on GitHub [Woocommerce-Becopay-Gateway](https://github.com/becopay/Woocommerce-Becopay-Gateway)
 
 
 
-## Installation
+== Installation ==
 
 
-### Automatic Installation
+== Automatic Installation ==
 * 	Login to your WordPress Admin area
 * 	Go to "Plugins > Add New" from the left hand menu
 * 	In the search box type "Woocommerce Becopay Gateway"
@@ -58,7 +55,7 @@ To contribute to this plugin feel free to fork it on GitHub [Woocommerce-Becopay
 *	A popup window will ask you to confirm your wish to install the Plugin.
 
 
-### Note:
+= Note: =
 If this is the first time you've installed a WordPress Plugin, you may need to enter the FTP login credential information. If you've installed a Plugin before, it will still have the login information. This information is available through your web server host.
 
 * Click "Proceed" to continue the installation. The resulting installation screen will list the installation as successful or note any problems during the install.
@@ -68,7 +65,7 @@ If this is the first time you've installed a WordPress Plugin, you may need to e
 *	Configure your "Becopay" settings. See below for details.
 
 
-### Manual Installation
+= Manual Installation =
 1. 	Download the plugin zip file
 2. 	Login to your WordPress Admin. Click on "Plugins > Add New" from the left hand menu.
 3.  Click on the "Upload" option, then click "Choose File" to select the zip file from your computer. Once selected, press "OK" and press the "Install Now" button.
@@ -80,7 +77,7 @@ If this is the first time you've installed a WordPress Plugin, you may need to e
 
 
 
-### Configure the plugin
+= Configure the plugin =
 To configure the plugin, go to __WooCommerce > Settings__ from the left hand menu, then click "Payment Gateways" from the top tab. You should see __"Becopay"__ as an option at the top of the screen. Click on it to configure the payment gateway.
 
 __*You can select the radio button next to Becopay from the list of payment gateways available to make it the default gateway.*__
@@ -98,10 +95,10 @@ __*You can select the radio button next to Becopay from the list of payment gate
 
 
 
-## Frequently Asked Questions
+== Frequently Asked Questions ==
 
 
-### What Do I Need To Use The Plugin
+= What Do I Need To Use The Plugin =
 
 1.	You need to have the WooCommerce plugin installed and activated on your WordPress site.
 2.	You need to open a merchant account on [Becopay](https://becopay.com/en/merchant-register/)
@@ -110,8 +107,8 @@ __*You can select the radio button next to Becopay from the list of payment gate
 
 
 
-## Changelog
+== Changelog ==
 
-### 1.0.0
+= 1.0.0 =
 *   First release
 

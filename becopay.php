@@ -41,6 +41,7 @@ define( 'BECOPAY_VERSION', '1.0.0' );
 /**
  * WooCommerce requirement configuration
  */
+define('BECOPAY_ID','becopay-gateway');//Unique ID for your gateway
 define('BECOPAY_ICON',plugin_dir_url(__FILE__).'/public/image/becopay.png'); // Gateway icon
 define('BECOPAY_TITLE','Becopay'); // Title of the payment method shown on the front page
 define('BECOPAY_DESCRIPTION','Pay via becopay: pay economically with cryptocurrency'); // Description for the payment method shown on the front page.
