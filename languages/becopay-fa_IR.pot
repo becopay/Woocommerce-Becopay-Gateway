@@ -1,0 +1,36 @@
+#: becopay.php
+msgid "Becopay"
+msgstr "بکوپی"
+
+#: becopay.php
+msgid "Pay via becopay: pay economically with cryptocurrency"
+msgstr "پرداخت با بکوپی: با رمزارز به صرفه بپردازید"
+
+#: includes/classBecopayGateway.php
+msgid "Mobile number"
+msgstr "شماره تلفن"
+
+#: includes/classBecopayGateway.php
+msgid "Api base url"
+msgstr "آدرس درگاه سرویس"
+
+#: includes/classBecopayGateway.php
+msgid "Api key"
+msgstr "کلید سرویس"
+
+#: includes/classBecopayGateway.php
+msgid "Becopay payment invoice id is"
+msgstr "شناسه پرداخت سرویس بکوپی شما"
+
+#: includes/classBecopayGateway.php
+msgid "Becopay payment price is not same with your order."
+msgstr "مبلغ اعلامی درگاه بکوپی با مبلغ سفارش شما یکسان نیست"
+
+#: includes/classBecopayGateway.php
+msgid "invoice id"
+msgstr "شناسه فاکتور"
+
+#: includes/classBecopayGateway.php
+msgid "The invoice was successfully paid"
+msgstr "فاکتور با موفقیت پرداخت شد"
+
