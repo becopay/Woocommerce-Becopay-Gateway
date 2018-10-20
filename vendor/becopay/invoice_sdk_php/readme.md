@@ -98,11 +98,15 @@ Response
 }
 ```
 
-**Check**<br>
+**Check invoice status with invoiceId**<br>
 For checking the invoice status you can use `check()` method.<br>
-If invalid data type is entered, throw an execption<br>
+If invalid data type is entered, throw an exception<br>
 If response is successful it will return object and if not, it will return false<br>
-`$payment->error` return the error message
+`$payment->error` return the error message<br>
+__Function parameter__
+```php
+check($invoiceId) // Set the Becopay InvoiceId
+```
 ```php
       /*
        * Use this function to check the invoice status.
@@ -111,13 +115,85 @@ If response is successful it will return object and if not, it will return false
        */
 try {
       /*
-       * This function will be used on your callback page or when you want to check the invoice status
-       * first you must get orderId from path or querystring using $_GET
+       * This function will be used on your callback page or when you want to check the invoice status.
+       * 
+       * First you must get orderId from path or query string using $_GET
        * then find related becopay Invoice id from your database
        * and use it to check the invoice status
        */
     
+      //Check invoice with InvoiceId
       $fetchedInvoice = $payment->check($invoiceId);
+      
+      if($fetchedInvoice)
+      {
+      	/*
+         * Insert your code here for updating order status
+         */
+    	if($fetchedInvoice->status == "success")
+        {
+        	// success msg
+        }else{
+        	//error msg
+        }
+        
+        
+		//echo the result
+      	echo json_encode($fetchedInvoice);
+        
+        
+      }else{
+        //Add your error handling
+        echo $payment->error;
+      } 
+} catch (Exception $e) {
+	//Add your exception handling
+    echo $e->getMessage();
+}
+```
+Response
+```json
+{
+    "id": "ID29_61a5",
+    "shopName": "New Shop",
+    "status": "waiting",
+    "remaining": 40,
+    "symbol": "IRR",
+    "price": 15000,
+    "date": "2018-10-13 06:45:36",
+    "timestamp": 1539413136148,
+    "description": "test payment",
+    "gatewayUrl": "https://gateway.url.com/invoice/ID29_61a5",
+    "callback": "http://www.your-website.com/invoice?orderid=12324320",
+    "orderId": "12324320"
+}
+```
+
+**Check invoice status with orderId**<br>
+For checking the invoice status with your orderId, you can use `checkByOrderId()` method.<br>
+If invalid data type is entered, throw an exception<br>
+If response is successful it will return object and if not, it will return false<br>
+`$payment->error` return the error message<br>
+__Function parameter__
+```php
+checkByOrderId($orderId) // Set the your orderId
+```
+```php
+      /*
+       * Use this function to check the invoice status.
+       * This function gets invoice id (which has been created by `create()` function) as parameter
+       * and returns status of that
+       */
+try {
+      /*
+       * This function will be used on your callback page or when you want to check the invoice status.
+       * 
+       * You must get orderId from path or query string using $_GET
+       * and use it to check the invoice status
+       */
+    
+      //Check invoice with OrderId
+      $fetchedInvoice = $payment->checkByOrderId($orderId);
       
       if($fetchedInvoice)
       {

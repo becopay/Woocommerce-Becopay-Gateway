@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 use Becopay\PaymentGateway;
 use Tests\LoadConfig;
 
-class PaymentGatewayCreateAndCheck extends TestCase
+class PaymentGatewayCheckTest extends TestCase
 {
 
     private $config = array();
@@ -26,16 +26,18 @@ class PaymentGatewayCreateAndCheck extends TestCase
     public function dataSet()
     {
         return $dataSet = array(
-            //Test create invoice and check invoice
+
+            //Test $orderId parameter with more than 50 character
             array(
-                'apiBaseUrl' => $this->config->API_BASE_URL,
+                'apiBaseUrl' => 'http://localhost', //The parameter is being tested
                 'apiKey' => $this->config->API_KEY,
-                'mobile' => $this->config->MOBILE,
-                'orderId' => (string)rand(),
+                'mobile' => '09100000',
+                'orderId' => '21245154843156463135468435165434654456468434684664681',
                 'price' => 54166,
                 'description' => 'test order',
-                'test' => 'Test create invoice and check invoice'
-            )
+                'isAssertion' => false,
+                'test' => 'Test $orderId parameter with more than 50 character'
+            ),
         );
     }
 
@@ -47,7 +49,7 @@ class PaymentGatewayCreateAndCheck extends TestCase
     public function testCreateMethod()
     {
         echo "\n//////////////////////////////////";
-        echo "\n/// Test Create invoice and Check Method";
+        echo "\n/// Test Check Method";
         foreach (self::dataSet() as $key => $data) {
             try {
                 $payment = new PaymentGateway(
@@ -55,19 +57,21 @@ class PaymentGatewayCreateAndCheck extends TestCase
                     $data['apiKey'],
                     $data['mobile']
                 );
-                echo "\n" . $key . ' : ' . $data['test'];
 
                 $result = $payment->create($data['orderId'], $data['price'], $data['description']);
-                if ($result) {
-                    $invoice = $payment->check($result->id);
-                    $this->assertTrue(true);
-                } else {
-                    $this->assertTrue(false);
-                }
-            } catch (\Exception $e) {
-                $this->assertTrue(false, 'dataSet number ' . $key . ' is not passed,' . $e->getMessage());
-            }
-        }
 
+                echo "\n" . $key . ' : ' . $data['test'];
+                $this->assertTrue(!empty($result) == $data['isAssertion']);
+
+            } catch (\Exception $e) {
+                if ($data['isAssertion'])
+                    $this->assertTrue(false, 'dataSet number ' . $key . ' is not passed,' . $e->getMessage());
+                else {
+                    echo "\n" . $key . ' : ' . $data['test'];
+                    $this->assertTrue(true);
+                }
+            }
+
+        }
     }
 }

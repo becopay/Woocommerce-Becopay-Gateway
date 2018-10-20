@@ -1,17 +1,17 @@
 [
     {
         "name": "becopay/invoice_sdk_php",
-        "version": "v1.0.1",
-        "version_normalized": "1.0.1.0",
+        "version": "v1.0.2",
+        "version_normalized": "1.0.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/becopay/Invoice_SDK_PHP.git",
-            "reference": "8cd03809ff8d3f8f4c0018e19f2423fee81bd10e"
+            "reference": "40c5c221d6cdbea54409370817965aa2cf4a6d30"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/becopay/Invoice_SDK_PHP/zipball/8cd03809ff8d3f8f4c0018e19f2423fee81bd10e",
-            "reference": "8cd03809ff8d3f8f4c0018e19f2423fee81bd10e",
+            "url": "https://api.github.com/repos/becopay/Invoice_SDK_PHP/zipball/40c5c221d6cdbea54409370817965aa2cf4a6d30",
+            "reference": "40c5c221d6cdbea54409370817965aa2cf4a6d30",
             "shasum": ""
         },
         "require": {
@@ -20,7 +20,7 @@
         "require-dev": {
             "phpunit/phpunit": "^4"
         },
-        "time": "2018-10-15T13:28:51+00:00",
+        "time": "2018-10-20T09:54:48+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
