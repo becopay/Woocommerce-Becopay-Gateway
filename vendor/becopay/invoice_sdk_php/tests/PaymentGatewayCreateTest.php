@@ -61,9 +61,9 @@ class PaymentGatewayCreateTest extends TestCase
             ),
             //Test $orderId parameter with more than 50 character
             array(
-                'apiBaseUrl' => 'http://localhost',
+                'apiBaseUrl' => $this->config->API_BASE_URL,
                 'apiKey' => $this->config->API_KEY,
-                'mobile' => '09100000',
+                'mobile' => $this->config->MOBILE,
                 'orderId' => '21245154843156463135468435165434654456468434684664681', //The parameter is being tested
                 'price' => 54166,
                 'description' => 'test order',
@@ -72,20 +72,42 @@ class PaymentGatewayCreateTest extends TestCase
             ),
             //Test $price parameter with more than 20 character
             array(
-                'apiBaseUrl' => 'http://localhost',
+                'apiBaseUrl' => $this->config->API_BASE_URL,
                 'apiKey' => $this->config->API_KEY,
-                'mobile' => '09100000',
+                'mobile' => $this->config->MOBILE,
                 'orderId' => '21245154',
                 'price' => 12545658754125485321554,//The parameter is being tested
                 'description' => 'test order',
                 'isAssertion' => false,
-                'test' => 'Test $orderId parameter with more than 20 character'
+                'test' => 'Test $price parameter with more than 20 character'
+            ),
+            //Test $price parameter with invalid format
+            array(
+                'apiBaseUrl' => $this->config->API_BASE_URL,
+                'apiKey' => $this->config->API_KEY,
+                'mobile' => $this->config->MOBILE,
+                'orderId' => '21245154',
+                'price' => 'a65646',//The parameter is being tested
+                'description' => 'test order',
+                'isAssertion' => false,
+                'test' => 'Test $price parameter with invalid format'
+            ),
+            //Test $price parameter with float value
+            array(
+                'apiBaseUrl' => $this->config->API_BASE_URL,
+                'apiKey' => $this->config->API_KEY,
+                'mobile' => $this->config->MOBILE,
+                'orderId' => rand(),
+                'price' => 1251.5,//The parameter is being tested
+                'description' => 'test order',
+                'isAssertion' => false,
+                'test' => 'Test $price parameter with float value'
             ),
             //Test $description parameter with more than 255 character
             array(
-                'apiBaseUrl' => 'http://localhost',
+                'apiBaseUrl' => $this->config->API_BASE_URL,
                 'apiKey' => $this->config->API_KEY,
-                'mobile' => '09100000',
+                'mobile' => $this->config->MOBILE,
                 'orderId' => '21245154',
                 'price' => 1254565875,
                 'description' => 'test order,test ordertest ordertest ordertest ordertest ordertest ordertest ordertest ordertest ordertest ordertest ordertest ordertest ordertest ordertest ordertest order', //The parameter is being tested
@@ -130,7 +152,8 @@ class PaymentGatewayCreateTest extends TestCase
 
             } catch (\Exception $e) {
                 if ($data['isAssertion'])
-                    $this->assertTrue(false, 'dataSet number ' . $key . ' is not passed,' . $e->getMessage());
+                    $this->assertTrue(false, 'dataSet "' . $data['test'] .
+                        '" is not passed,' . $e->getMessage() . ', ' . $payment->error);
                 else {
                     echo "\n" . $key . ' : ' . $data['test'];
                     $this->assertTrue(true);
