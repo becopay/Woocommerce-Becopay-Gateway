@@ -5,7 +5,7 @@
 **Tags:** woocommerce, payment gateway, payment gateways, becopay
 **Stable tag:** 1.0.0
 
-**License:** [Apache 2](https://github.com/becopay/Woocommerce-Becopay-Gateway/LICENSE.txt)
+**License:** [Apache 2](https://github.com/becopay/Woocommerce-Becopay-Gateway/blob/master/LICENSE.txt)
 
 Becopay Woocommerce Payment Gateway allows you to pay with cryptocurrency.
 
