@@ -43,6 +43,7 @@ class BecopayGateway extends WC_Payment_Gateway implements interfaceBecopayGatew
         'orderId' => 'orderId',
         'description' => 'description'
     );
+
     /**
      * BecopayGateway constructor.
      *
@@ -96,7 +97,7 @@ class BecopayGateway extends WC_Payment_Gateway implements interfaceBecopayGatew
 
         }
 
-        $this->merchantCurrency = $this->get_option('merchantCur');
+        $this->merchantCurrency = $this->get_option('merchantCur') ?: BECOPAY_MERCHANT_CURRENCY;
     }
 
     /**
@@ -196,44 +197,43 @@ class BecopayGateway extends WC_Payment_Gateway implements interfaceBecopayGatew
             $currency = $order->get_currency();
             $price = floatval($order->get_total());
             $description = implode(array(
-                'orderId:'.$payment_order_id,
-                'price:'.$price,
-                'currency:'.$currency,
-                'userEmail:'.$order->get_billing_email()
-            ),', ');
+                'orderId:' . $payment_order_id,
+                'price:' . $price,
+                'currency:' . $currency,
+                'userEmail:' . $order->get_billing_email()
+            ), ', ');
 
             //create Becopay invoice
-            $invoice = $this->payment->create($payment_order_id,$price, $description,$currency,$this->merchantCurrency);
+            $invoice = $this->payment->create($payment_order_id, $price, $description, $currency, $this->merchantCurrency);
             if ($invoice) {
 
                 //validate create invoice response
-                if(!self::__validateResponse((object)array(
+                if (!self::__validateResponse((object)array(
                     'price' => $price,
                     'currency' => $currency,
                     'merchantCur' => $this->merchantCurrency,
                     'orderId' => $payment_order_id,
                     'description' => $description
-                ),$invoice))
-                {
+                ), $invoice)) {
                     wc_add_notice('Invalid response from payment gateway', 'error');
                     return false;
                 }
+
+                //Save payment order id, if exist update new paymentOrderId
+                if (!add_post_meta($order_id, '_BecopayOrderId', $payment_order_id, true))
+                    update_post_meta($order_id, '_BecopayOrderId', $payment_order_id);
 
                 //Save Becopay InvoiceId, if exist update new InvoiceId
                 if (!add_post_meta($order_id, '_BecopayInvoiceId', $invoice->id, true))
                     update_post_meta($order_id, '_BecopayInvoiceId', $invoice->id);
 
-                //Save payment order id, if exist update new paymentOrderId
-                if (!add_post_meta($order_id, '_BecopayOrderId', $payment_order_id, true))
-                    update_post_meta($order_id, '_BecopayOrderId', $payment_order_id, true);
-
                 //Add note on user order pay and set
-                $order->add_order_note(__('Becopay payment invoice id is', 'becopay') . ' ' . $invoice->id , 1);
+                $order->add_order_note(__('Becopay payment invoice id is', 'becopay') . ' ' . $invoice->id, 1);
 
                 //Add note on order page for admin
                 $order->add_order_note(
-                    __('Customer checkout:', 'becopay') . ' ' . $invoice->payerAmount .' '.$invoice->payerCur.', '.
-                    __('Merchant Receive', 'becopay') . ' ' . $invoice->merchantAmount.' '. $invoice->merchantCur
+                    __('Customer checkout:', 'becopay') . ' ' . $invoice->payerAmount . ' ' . $invoice->payerCur . ', ' .
+                    __('Merchant Receive', 'becopay') . ' ' . $invoice->merchantAmount . ' ' . $invoice->merchantCur
                     , 0);
 
                 // Return thank you redirect
@@ -300,7 +300,7 @@ class BecopayGateway extends WC_Payment_Gateway implements interfaceBecopayGatew
                     wp_redirect($woocommerce->cart->get_checkout_url());
                     exit;
                 } //if Becopay payment price with wc_order price is not same redirect to checkout page
-                else if ($checkInvoice->price != $price || $checkInvoice->payerCur != $currency) {
+                else if ($checkInvoice->payerAmount != $price || $checkInvoice->payerCur != $currency) {
                     $order->add_order_note(
                         __('Becopay payment price or currency is not same with your order.', 'becopay') . ' ' .
                         __('invoice id', 'becopay') . ' ' . $checkInvoice->id, 1);
@@ -308,7 +308,7 @@ class BecopayGateway extends WC_Payment_Gateway implements interfaceBecopayGatew
                     wp_redirect($woocommerce->cart->get_checkout_url());
                     exit;
                 } //if status is success complete the payment
-                else if ($checkInvoice->status == 'success') {
+                else if ($checkInvoice->status == 'success'){
                     $order->payment_complete($order_id);
                     $woocommerce->cart->empty_cart();
 
@@ -321,6 +321,7 @@ class BecopayGateway extends WC_Payment_Gateway implements interfaceBecopayGatew
                 }
             }
         }
+        error_log('error condition');
         //if is not match none of the condition redirect to checkout page
         wp_redirect($woocommerce->cart->get_checkout_url());
         exit;
@@ -333,9 +334,10 @@ class BecopayGateway extends WC_Payment_Gateway implements interfaceBecopayGatew
      * @param $response object of response parameter
      * @return bool
      */
-    private function __validateResponse($request,$response){
+    private function __validateResponse($request, $response)
+    {
         foreach ($this->validatePattern as $res_value => $req_value)
-            if($response->$res_value != $request->$req_value)
+            if ($response->$res_value != $request->$req_value)
                 return false;
         return true;
     }
