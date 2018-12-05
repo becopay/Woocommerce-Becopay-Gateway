@@ -1,9 +1,9 @@
 === WooCommerce Becopay Gateway ===
 Tags: woocommerce, payment gateway, payment gateways, becopay, gateway, payment, woocommerce payment, woocommerce gateway, bitcoin, crypto
-
 Stable tag: 1.1.0
-
+Tested up to: 4.9.8
 License: Apache 2
+Requires PHP: 5.3.0
 
 Becopay Woocommerce Payment Gateway allows you to pay with cryptocurrency.
 
