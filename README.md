@@ -2,8 +2,10 @@
 
 
 
-**Tags:** woocommerce, payment gateway, payment gateways, becopay
-**Stable tag:** 1.0.0
+**Tags:** woocommerce, payment gateway, payment gateways, becopay, gateway, payment, woocommerce payment, woocommerce gateway, bitcoin, crypto
+
+
+**Stable tag:** 1.1.0
 
 **License:** [Apache 2](https://github.com/becopay/Woocommerce-Becopay-Gateway/blob/master/LICENSE.txt)
 
@@ -77,9 +79,6 @@ If this is the first time you've installed a WordPress Plugin, you may need to e
 6. 	Click on the sub tab for "Becopay".
 7.	Configure your "Becopay" settings. See below for details.
 
-
-
-
 ### Configure the plugin
 To configure the plugin, go to __WooCommerce > Settings__ from the left hand menu, then click "Payment Gateways" from the top tab. You should see __"Becopay"__ as an option at the top of the screen. Click on it to configure the payment gateway.
 
@@ -91,6 +90,7 @@ __*You can select the radio button next to Becopay from the list of payment gate
 * __Mobile Number__  - enter the phone number you registered in the Becopay here.If you don't have Becopay merchat account register [here](https://becopay.com/en/merchant-register/).
 * __Becopay Api Base Url__  - enter Becopay api base url here. If you don't have Becopay merchat account register [here](https://becopay.com/en/merchant-register/).
 * __Becopay Api Key__  - enter your Becopay Api Key here. If you don't have Becopay merchat account register [here](https://becopay.com/en/merchant-register/).
+* __Merchant Currency__  - enter your money's currency wants to receive.e.g: IRR, USD 
 * Click on __Save Changes__ for the changes you made to be effected.
 
 __Note:__<br>
@@ -98,19 +98,15 @@ The format of your callback link is in this format <br>
 `https://your-site/wc-api/BecopayGateway/?orderId=ORDER_ID`
 
 ## Frequently Asked Questions
-
-
 ### What Do I Need To Use The Plugin
 
 1.	You need to have the WooCommerce plugin installed and activated on your WordPress site.
 2.	You need to open a merchant account on [Becopay](https://becopay.com/en/merchant-register/)
-
-
-
-
 
 ## Changelog
 
 ### 1.0.0
 *   First release
 
+### 1.1.0
+*   Support currency
