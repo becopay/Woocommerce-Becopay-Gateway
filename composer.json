@@ -14,8 +14,8 @@
     },
     "require": {
         "php": ">=5.3.0",
-        "becopay/invoice_sdk_php": "^1.0",
-        "yahnis-elsts/plugin-update-checker": "dev-master"
+        "yahnis-elsts/plugin-update-checker": "dev-master",
+        "becopay/invoice_sdk_php": "v1.1."
     },
     "license": "Apache-2.0",
     "authors": [

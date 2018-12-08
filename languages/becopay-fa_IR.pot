@@ -19,6 +19,10 @@ msgid "Api key"
 msgstr "کلید سرویس"
 
 #: includes/classBecopayGateway.php
+msgid "Merchant Currency "
+msgstr "واحد پول فروشنده"
+
+#: includes/classBecopayGateway.php
 msgid "Enter the phone number you registered in the Becopay here"
 msgstr "شماره تلفنی که با آن در بکوپی ثبت نامه کرده‌اید اینجا وارد کنید"
 
@@ -31,12 +35,28 @@ msgid "Enter your Becopay Api Key here"
 msgstr "توکن سرویس بکوپی خود را اینجا وارد کنید"
 
 #: includes/classBecopayGateway.php
+msgid "Invalid response from payment gateway."
+msgstr "اطلاعات دریافتی از سمت درگاه پرداخت نامعتبر می باشد"
+
+#: includes/classBecopayGateway.php
+msgid "Merchant receive currency. e.g. IRR, USD, EU"
+msgstr "واحد پول دریافتی فروشنده. مثال: USD, IRR, EU"
+
+#: includes/classBecopayGateway.php
 msgid "Becopay payment invoice id is"
 msgstr "شناسه پرداخت سرویس بکوپی شما"
 
 #: includes/classBecopayGateway.php
-msgid "Becopay payment price is not same with your order."
-msgstr "مبلغ اعلامی درگاه بکوپی با مبلغ سفارش شما یکسان نیست"
+msgid "Customer checkout:"
+msgstr "مبلغ پرداختی مشتری:"
+
+#: includes/classBecopayGateway.php
+msgid "Merchant Receive"
+msgstr "مبلغ دریافتی فروشنده: "
+
+#: includes/classBecopayGateway.php
+msgid "Becopay payment price or currency is not same with your order."
+msgstr "مبلغ یا واحد پول اعلامی درگاه بکوپی با مبلغ یا واحد پول سفارش شما یکسان نیست"
 
 #: includes/classBecopayGateway.php
 msgid "invoice id"

@@ -9,14 +9,14 @@
  * that starts the plugin.
  *
  * @link              https://becopay.com
- * @since             1.0.0
+ * @since             1.1.0
  * @package           Becopay
  *
  * @wordpress-plugin
  * Plugin Name:       Woocommerce Becopay Payment Gateway
  * Plugin URI:        https://becopay.com/en/io/#Woocommerce-Becopay-Gateway
  * Description:       A woocommerce payment gateway for becopay.
- * Version:           1.0.0
+ * Version:           1.1.0
  * Author:            Becopay Team <io@becopay.com>
  * Author URI:        https://becopay.com/
  * License:           Apache-2.0
@@ -32,10 +32,10 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Currently plugin version.
- * Start at version 1.0.0
+ * Start at version 1.1.0
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'BECOPAY_VERSION', '1.0.0' );
+define( 'BECOPAY_VERSION', '1.1.0' );
 
 
 /**
@@ -46,6 +46,7 @@ define('BECOPAY_ICON',plugin_dir_url(__FILE__).'/public/image/becopay.png'); // 
 define('BECOPAY_TITLE','Becopay'); // Title of the payment method shown on the front page
 define('BECOPAY_DESCRIPTION','Pay via becopay: pay economically with cryptocurrency'); // Description for the payment method shown on the front page.
 define('BECOPAY_PANEL_DESCRIPTION','Allow customers to pay cryptocurrency'); // Description for the payment method shown on the admin page.
+define('BECOPAY_MERCHANT_CURRENCY','IRR'); // Merchant default currency.
 
 /**
  * Plugin update checking requirement configuration
