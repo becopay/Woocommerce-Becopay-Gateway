@@ -45,6 +45,35 @@ class BecopayGateway extends WC_Payment_Gateway implements interfaceBecopayGatew
     );
 
     /**
+     * Convert currency to support currency
+     * @sinc 1.1.1
+     * @access   private
+     * @var array
+     */
+    private $covertCurrency = array(
+        'IRT' => array(
+            'to' => 'IRR',
+            'ratio' => 10
+        ), 'IRHT' => array(
+            'to' => 'IRR',
+            'ratio' => 10000
+        ), 'IRHR' => array(
+            'to' => 'IRR',
+            'ratio' => 1000
+        ),
+    );
+
+    /**
+     * Currency Code is support
+     * @sinc 1.1.1
+     * @access   private
+     * @var array
+     */
+    private $supportCurrency = array(
+        'IRR', 'USD', 'EUR'
+    );
+
+    /**
      * BecopayGateway constructor.
      *
      * @since    1.0.0
@@ -183,7 +212,7 @@ class BecopayGateway extends WC_Payment_Gateway implements interfaceBecopayGatew
      * @param $order_id
      * @return array|mixed
      *
-     * @since    1.1.0
+     * @since    1.1.1
      * @access   public
      */
     public function process_payment($order_id)
@@ -194,23 +223,28 @@ class BecopayGateway extends WC_Payment_Gateway implements interfaceBecopayGatew
         try {
             //create unique payment order id for send to becopay
             $payment_order_id = uniqid($order_id . '-');
-            $currency = $order->get_currency();
-            $price = floatval($order->get_total());
+
+            $price = $this->getAmount($order->get_total(),$order->get_currency());
+            if(!$price){
+                wc_add_notice('Gateway is not support your currency', 'error');
+                return false;
+            }
+
             $description = implode(array(
                 'orderId:' . $payment_order_id,
-                'price:' . $price,
-                'currency:' . $currency,
+                'price:' . $price->total,
+                'currency:' . $price->currency,
                 'userEmail:' . $order->get_billing_email()
             ), ', ');
 
             //create Becopay invoice
-            $invoice = $this->payment->create($payment_order_id, $price, $description, $currency, $this->merchantCurrency);
+            $invoice = $this->payment->create($payment_order_id, $price->total, $description, $price->currency, $this->merchantCurrency);
             if ($invoice) {
 
                 //validate create invoice response
                 if (!self::__validateResponse((object)array(
-                    'price' => $price,
-                    'currency' => $currency,
+                    'price' => $price->total,
+                    'currency' => $price->currency,
                     'merchantCur' => $this->merchantCurrency,
                     'orderId' => $payment_order_id,
                     'description' => $description
@@ -257,7 +291,7 @@ class BecopayGateway extends WC_Payment_Gateway implements interfaceBecopayGatew
     /**
      * Check order payment status on api callback
      *
-     * @since    1.1.0
+     * @since    1.1.1
      * @access   public
      */
     public function checkInvoice()
@@ -292,15 +326,18 @@ class BecopayGateway extends WC_Payment_Gateway implements interfaceBecopayGatew
 
             if ($checkInvoice) {
 
-                $currency = $order->get_currency();
-                $price = floatval($order->get_total());
+                $price = $this->getAmount($order->get_total(),$order->get_currency());
+                if(!$price){
+                    wc_add_notice('Gateway is not support your currency', 'error');
+                    return false;
+                }
 
                 //if status is waiting return to checkout page
                 if ($checkInvoice->status == 'waiting') {
                     wp_redirect($woocommerce->cart->get_checkout_url());
                     exit;
                 } //if Becopay payment price with wc_order price is not same redirect to checkout page
-                else if ($checkInvoice->payerAmount != $price || $checkInvoice->payerCur != $currency) {
+                else if ($checkInvoice->payerAmount != $price->total || $checkInvoice->payerCur != $price->currency) {
                     $order->add_order_note(
                         __('Becopay payment price or currency is not same with your order.', 'becopay') . ' ' .
                         __('invoice id', 'becopay') . ' ' . $checkInvoice->id, 1);
@@ -308,7 +345,7 @@ class BecopayGateway extends WC_Payment_Gateway implements interfaceBecopayGatew
                     wp_redirect($woocommerce->cart->get_checkout_url());
                     exit;
                 } //if status is success complete the payment
-                else if ($checkInvoice->status == 'success'){
+                else if ($checkInvoice->status == 'success') {
                     $order->payment_complete($order_id);
                     $woocommerce->cart->empty_cart();
 
@@ -340,5 +377,33 @@ class BecopayGateway extends WC_Payment_Gateway implements interfaceBecopayGatew
             if ($response->$res_value != $request->$req_value)
                 return false;
         return true;
+    }
+
+    /**
+     * Check and covert the currency and price
+     * @sinc 1.1.1
+     * @access   private
+     *
+     * @param $total
+     * @param $currency
+     * @return bool|object
+     */
+    private function getAmount($total,$currency){
+        $total = floatval($total);
+
+        foreach ($this->covertCurrency as $code => $covert)
+        if($currency == $code)
+            return (object)array(
+                'currency'=>$covert['to'],
+                'total'=>$total * $covert['ratio'],
+            );
+
+        if(in_array($currency,$this->supportCurrency))
+            return (object)array(
+                'currency'=>$currency,
+                'total'=>$total,
+            );
+
+        return false;
     }
 }

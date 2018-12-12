@@ -66,3 +66,7 @@ msgstr "شناسه فاکتور"
 msgid "The invoice was successfully paid"
 msgstr "فاکتور با موفقیت پرداخت شد"
 
+#: includes/classBecopayGateway.php
+msgid "Gateway is not support your currency"
+msgstr "واحد پول شما را درگاه پشتیبانی نمی کند"
+
