@@ -16,7 +16,7 @@
  * Plugin Name:       Woocommerce Becopay Payment Gateway
  * Plugin URI:        https://becopay.com/en/io/#Woocommerce-Becopay-Gateway
  * Description:       A woocommerce payment gateway for becopay.
- * Version:           1.1.0
+ * Version:           1.1.1
  * Author:            Becopay Team <io@becopay.com>
  * Author URI:        https://becopay.com/
  * License:           Apache-2.0
@@ -32,10 +32,10 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Currently plugin version.
- * Start at version 1.1.0
+ * Start at version 1.1.1
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'BECOPAY_VERSION', '1.1.0' );
+define( 'BECOPAY_VERSION', '1.1.1' );
 
 
 /**

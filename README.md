@@ -2,7 +2,7 @@
 
 **Tags:** woocommerce, payment gateway, payment gateways, becopay, gateway, payment, woocommerce payment, woocommerce gateway, bitcoin, crypto
 
-**Stable tag:** 1.1.0
+**Stable tag:** 1.1.1
 
 **Tested up to:** 5.0
 
@@ -107,3 +107,6 @@ The format of your callback link is in this format <br>
 
 ### 1.1.0
 *   Support currency
+
+### 1.1.1
+*   Check currency and convert currency
