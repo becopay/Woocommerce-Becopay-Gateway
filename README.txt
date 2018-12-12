@@ -1,7 +1,7 @@
 === WooCommerce Becopay Gateway ===
 Tags: woocommerce, payment gateway, payment gateways, becopay, gateway, payment, woocommerce payment, woocommerce gateway, bitcoin, crypto
 Stable tag: 1.1.0
-Tested up to: 4.9.8
+Tested up to: 5.0
 License: Apache 2
 Requires PHP: 5.3.0
 
@@ -12,7 +12,7 @@ Becopay Woocommerce Payment Gateway allows you to pay with cryptocurrency.
 
 This is a Becopay payment gateway for WooCommerce.
 
-Becopay is an payment gateway that allows you to accept cryptocurrency payments online, the simple way.
+Becopay is a payment gateway that allows you to accept cryptocurrency payments online, the simple way.
 
 To get a Becopay merchant account visit their website by clicking [here](https://www.becopay.com)
 
@@ -52,10 +52,8 @@ To contribute to this plugin feel free to fork it on GitHub [Woocommerce-Becopay
 * 	Login to your WordPress Admin area
 * 	Go to "Plugins > Add New" from the left hand menu
 * 	In the search box type "Woocommerce Becopay Gateway"
-*	From the search result you will see "Woocommerce Becopay Gateway" click on "Install Now" to install the plugin
+*	From the search result you will see "WooCommerce Becopay Gateway" click on "Install Now" to install the plugin
 *	A popup window will ask you to confirm your wish to install the Plugin.
-
-
 = Note: =
 If this is the first time you've installed a WordPress Plugin, you may need to enter the FTP login credential information. If you've installed a Plugin before, it will still have the login information. This information is available through your web server host.
 
