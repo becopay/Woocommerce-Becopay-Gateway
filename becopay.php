@@ -9,7 +9,7 @@
  * that starts the plugin.
  *
  * @link              https://becopay.com
- * @since             1.1.0
+ * @since             1.1.2
  * @package           Becopay
  *
  * @wordpress-plugin
@@ -32,10 +32,10 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Currently plugin version.
- * Start at version 1.1.1
+ * Start at version 1.1.2
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'BECOPAY_VERSION', '1.1.1' );
+define( 'BECOPAY_VERSION', '1.1.2' );
 
 
 /**

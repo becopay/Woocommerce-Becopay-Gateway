@@ -6,3 +6,5 @@
 *   Support currency
 ### 1.1.1
 *   Check currency and convert currency
+### 1.1.2
+*   Fixed load language file
